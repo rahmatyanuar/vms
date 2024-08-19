@@ -1,0 +1,19 @@
+.video-container {
+  position: relative;
+  width: 720px;
+  height: 560px;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.controls {
+  margin-top: 10px;
+}
+
+button {
+  margin-right: 10px;
+}

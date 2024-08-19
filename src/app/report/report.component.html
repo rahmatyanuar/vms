@@ -1,0 +1,91 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+            <c-row>
+                <c-col><strong>Report Table</strong></c-col>
+                <c-col style="text-align: right;">
+                    <select aria-label="Small select example" cSelect sizing="sm">
+                        <option>Get Report</option>
+                        <option value="1">1 Week Ago</option>
+                        <option value="2">2 Week Ago</option>
+                        <option value="3">3 Week Ago</option>
+                        <option value="4">1 Month Ago</option>
+                      </select>
+                    <button cButton color="primary" size="sm">
+                    Print
+                    </button>
+                </c-col>
+            </c-row>
+
+        </c-card-header>
+        <c-card-body>
+            <table cTable small>
+                <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Check In Datetime</th>
+                <th scope="col">Check Out Datetime</th>
+                <th scope="col">Visitor Card ID</th>
+                <th scope="col">Visitor Name</th>
+                <th scope="col">Floor</th>
+                <th scope="col">Visit Duration</th>
+                <th scope="col">Frontline Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>01 Jan 2024 01:00:00</td>
+                    <td>01 Jan 2024 02:00:00</td>
+                    <td>V001</td>
+                    <td>Visitor A</td>
+                    <td>GF</td>
+                    <td>1 hour</td>
+                    <td>Anita</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>01 Jan 2024 01:30:00</td>
+                    <td>01 Jan 2024 02:00:00</td>
+                    <td>V001</td>
+                    <td>Visitor B</td>
+                    <td>GF</td>
+                    <td>30 Minutes</td>
+                    <td>Budi</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>01 Jan 2024 03:00:00</td>
+                    <td>01 Jan 2024 07:00:00</td>
+                    <td>V001</td>
+                    <td>Visitor C</td>
+                    <td>GF</td>
+                    <td>4 hour</td>
+                    <td>Charli</td>
+                </tr>
+                </tbody>
+            </table>
+        </c-card-body>
+      </c-card>
+    </c-col>
+</c-row>
+<c-row>
+    <c-pagination align="center" aria-label="Page navigation example">
+        <li cPageItem>
+          <a cPageLink [routerLink]>Previous</a>
+        </li>
+        <li cPageItem>
+          <a cPageLink [routerLink]>1</a>
+        </li>
+        <li cPageItem>
+          <a cPageLink [routerLink]>2</a>
+        </li>
+        <li cPageItem>
+          <a cPageLink [routerLink]>3</a>
+        </li>
+        <li cPageItem>
+          <a cPageLink [routerLink]>Next</a>
+        </li>
+      </c-pagination>
+</c-row>

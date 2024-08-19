@@ -1,0 +1,96 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+            <c-row>
+                <c-col><strong>User Table</strong></c-col>
+                <c-col style="text-align: right;">
+                    <button cButton color="primary" size="sm">
+                    Add User
+                    </button>
+                </c-col>
+            </c-row>
+
+        </c-card-header>
+        <c-card-body>
+            <table cTable small>
+                <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Fullname</th>
+                <th scope="col">&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td style="text-align: right;"><c-dropdown>
+                        <button cButton cDropdownToggle color="secondary" size="sm">
+                        Action
+                        </button>
+                        <ul cDropdownMenu>
+                            <li><a [routerLink]="[]" cDropdownItem>Delete</a></li>
+                            <li><a [routerLink]="[]" cDropdownItem>Update</a></li>
+                        </ul>
+                    </c-dropdown>
+                    </td>
+                </tr>
+                <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td style="text-align: right;">
+                    <c-dropdown>
+                        <button cButton cDropdownToggle color="secondary" size="sm">
+                        Action
+                        </button>
+                        <ul cDropdownMenu>
+                            <li><a [routerLink]="[]" cDropdownItem>Delete</a></li>
+                            <li><a [routerLink]="[]" cDropdownItem>Update</a></li>
+                        </ul>
+                    </c-dropdown>
+                </td>
+                </tr>
+                <tr>
+                <th scope="row">3</th>
+                <td colSpan="2">Larry the Bird</td>
+                <td style="text-align: right;">
+                    <c-dropdown>
+                        <button cButton cDropdownToggle color="secondary" size="sm">
+                        Action
+                        </button>
+                        <ul cDropdownMenu>
+                            <li><a [routerLink]="[]" cDropdownItem>Delete</a></li>
+                            <li><a [routerLink]="[]" cDropdownItem>Update</a></li>
+                        </ul>
+                    </c-dropdown>
+                </td>
+                </tr>
+                </tbody>
+            </table>
+        </c-card-body>
+      </c-card>
+    </c-col>
+</c-row>
+<c-row>
+    <c-pagination align="center" aria-label="Page navigation example">
+        <li cPageItem>
+          <a cPageLink [routerLink]>Previous</a>
+        </li>
+        <li cPageItem>
+          <a cPageLink [routerLink]>1</a>
+        </li>
+        <li cPageItem>
+          <a cPageLink [routerLink]>2</a>
+        </li>
+        <li cPageItem>
+          <a cPageLink [routerLink]>3</a>
+        </li>
+        <li cPageItem>
+          <a cPageLink [routerLink]>Next</a>
+        </li>
+      </c-pagination>
+</c-row>

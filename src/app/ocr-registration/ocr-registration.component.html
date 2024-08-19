@@ -1,0 +1,41 @@
+<c-row>
+  <c-col>
+      <div>
+        <h2>OCR Registration</h2>
+        <video #videoElement width="540" height="380" autoplay></video>
+        <div>
+          <button cButton color="primary" (click)="capture()">Capture Image</button>
+        </div>
+      </div>
+    </c-col>
+    <c-col>
+      <h2>Image Captured</h2>
+      <div>
+        <canvas #canvasElement width="540" height="380"></canvas>
+      </div>
+    </c-col>
+</c-row>
+<c-row>
+  <c-col>
+    <h2>OCR File Upload</h2>
+    <div>
+      <div class="mb-3">
+        <input cFormControl id="formFile" type="file" (change)="onFileSelected($event)" />
+      </div>
+    </div>
+  </c-col>
+</c-row>
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header> 
+        <strong>OCR Text Result</strong>
+      </c-card-header>
+      <c-card-body>
+          <div class="mb-3">
+            {{text}}
+          </div>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

@@ -1,0 +1,19 @@
+<c-row>
+  <c-col>
+    <div style="position: relative; width: 720px; height: 560px;">
+      <video id="video" width="720" height="560" autoplay muted ></video>
+      <canvas id="overlay" style="position: absolute; top: 0; left: 0;" width="720" height="560"></canvas>
+    </div>
+  </c-col>
+  <c-col>
+    <div>
+      <img src={{imagePath}}/>
+    </div>
+  </c-col>
+</c-row>
+<c-row>
+  <div class="controls">
+    <button cButton color="primary" (click)="startDetection()" [disabled]="isDetecting">Start Detection</button>
+    <button cButton color="secondary" (click)="stopDetection()" [disabled]="!isDetecting">Stop Detection</button>
+  </div>
+</c-row>
