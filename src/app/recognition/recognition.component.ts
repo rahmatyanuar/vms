@@ -1,11 +1,13 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ButtonDirective, ColComponent, RowComponent } from '@coreui/angular';
 import * as faceapi from 'face-api.js';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-recognition',
   standalone: true, 
-  imports: [ButtonDirective, RowComponent, ColComponent],
+  imports: [ButtonDirective, RowComponent, ColComponent, HttpClientModule],
   templateUrl: './recognition.component.html',
   styleUrl: './recognition.component.scss'
 })
@@ -20,6 +22,18 @@ export class RecognitionComponent implements OnInit{
   queryImage: ElementRef;
   labeledFaceDescriptors: any;
   imagePath:string;
+  photoNameList: string[] = [];
+
+  constructor(private http: HttpClient) {
+    this.getImagesName();
+  }
+
+  getImagesName() {
+    this.http.get<string[]>('http://localhost:9191/api/getPhotoNames').subscribe({
+      next: (data)=> this.photoNameList = data,
+      error: (err) => console.error('HTTP Error:', err.message),
+    });
+  }
   
   async ngOnInit() {
     await this.loadModels();
@@ -77,7 +91,7 @@ export class RecognitionComponent implements OnInit{
           const drawBox = new faceapi.draw.DrawBox(box, { label: result.toString() })
           this.canvas.width = this.canvas.width;
           drawBox.draw(this.canvas);
-          this.imagePath = 'assets/images/person/'+result.label+'.jpg';
+          this.imagePath = 'assets/images/person/'+result.label;
         })
         faceapi.draw.drawFaceExpressions(this.canvas, resizedDetections);
 
@@ -90,7 +104,7 @@ export class RecognitionComponent implements OnInit{
         // } catch (error) {
         //   console.log(error);
         // }
-      }, 100); 
+      }, 200); 
     }
   }
 
@@ -106,7 +120,17 @@ export class RecognitionComponent implements OnInit{
   }
 
   loadLabeledImages() {
-    const labels = ['rahmat','arina','albi','jokowi', 'prabowo']
+    const labels = this.photoNameList;
+  //   const labels = [
+  //     "albi.jpg",
+  //     "arina.jpg",
+  //     "jokowi.jpg",
+  //     "prabowo.jpg",
+  //     "rahmat.jpg",
+  //     "rahmat_1.jpg",
+  //     "rahmat_2.jpg"
+  // ];
+
     return Promise.all(
       labels.map(async label => {
         const descriptions = []
@@ -115,7 +139,8 @@ export class RecognitionComponent implements OnInit{
         //   const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
         //   descriptions.push(detections.descriptor)
         // }
-        const img = await faceapi.fetchImage('assets/images/person/'+label+'.jpg');
+        const img = await faceapi.fetchImage('assets/images/person/'+label);
+        // const img = await faceapi.fetchImage('http://localhost:9191/api/kycimage?imageName='+label);
         const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor();
         if(detections == undefined){
           console.log("detections.descriptor is null")
